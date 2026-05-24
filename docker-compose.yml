@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+
+  elasticsearch:
+    image: elasticsearch:9.2.8
+    ports:
+      - "9200:9200"
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+
+  backend:
+    build: ./backend/ecommercesearch
+    ports:
+      - "9090:9090"
+    environment:
+      - SPRING_ELASTICSEARCH_URIS=http://elasticsearch:9200
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "4200:80"

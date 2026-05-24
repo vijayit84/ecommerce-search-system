@@ -1,0 +1,24 @@
+<div class="container">
+
+  <h2>Product Search</h2>
+
+  <input
+    type="text"
+    [(ngModel)]="keyword"
+    placeholder="Search product">
+
+  <button (click)="search()">
+    Search
+  </button>
+
+  <div *ngFor="let product of products">
+
+    <h3>{{product.name}}</h3>
+
+    <p>Brand: {{product.brand}}</p>
+
+    <p>Price: {{product.price}}</p>
+
+  </div>
+
+</div>
